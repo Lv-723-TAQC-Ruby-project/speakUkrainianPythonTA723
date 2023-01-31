@@ -21,9 +21,10 @@ driver.maximize_window()
 driver.get(url)
 advancedSearch = driver.find_element(by=By.XPATH, value="//span[@title='Розширений пошук']")
 advancedSearch.click()
+time.sleep(3)
 sortDescendingButton = driver.find_element(by=By.XPATH, value="//span[@class='anticon anticon-arrow-up control-sort-arrow']")
 sortDescendingButton.click()
-time.sleep(2)
+time.sleep(3)
 wordNameCard = "Школа танців Dream Team"
 nameCard = driver.find_element(by=By.XPATH, value="//div[text()='Школа танців Dream Team']").text
 assert_that(nameCard).is_equal_to(wordNameCard)
