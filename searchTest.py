@@ -16,6 +16,17 @@ time.sleep(3)
 club=driver.find_element(by=By.XPATH, value="//div[@class='name']").text
 assert_that(club).is_equal_to(keyWord)
 
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.get(url)
+advancedSearch = driver.find_element(by=By.XPATH, value="//span[@title='Розширений пошук']")
+advancedSearch.click()
+sortDescendingButton = driver.find_element(by=By.XPATH, value="//span[@class='anticon anticon-arrow-up control-sort-arrow']")
+sortDescendingButton.click()
+time.sleep(2)
+wordNameCard = "Школа танців Dream Team"
+nameCard = driver.find_element(by=By.XPATH, value="//div[text()='Школа танців Dream Team']").text
+assert_that(nameCard).is_equal_to(wordNameCard)
 driver.quit()
 
 
