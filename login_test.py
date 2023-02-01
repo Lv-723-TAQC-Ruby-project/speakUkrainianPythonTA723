@@ -4,14 +4,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from jproperties import Properties
 
-
 xpath_profile_menu_button = "//div[contains(@class, 'user-profile')]"
 xpath_enter_button = "//div[contains(text(), 'Увійти')]"
 xpath_email_input = "//input[@id='basic_email']"
 xpath_password_input = "//input[@id='basic_password']"
 xpath_login_button = "//button[contains(@class, 'login-button')]"
 text_to_check = "Додати центр"
-
 
 configs = Properties()
 with open('config.properties', 'rb') as config_file:
