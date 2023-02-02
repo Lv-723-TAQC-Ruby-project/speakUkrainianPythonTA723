@@ -2,7 +2,7 @@
 
 # base config
 
-create file `local_settings.py` add lines
+create file `settings/local_settings.py` add lines
 
 ```properties
 base_web_url = "https://speak-ukrainian.org.ua/dev/"
