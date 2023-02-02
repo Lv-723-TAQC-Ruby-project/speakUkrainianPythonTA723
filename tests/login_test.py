@@ -1,5 +1,5 @@
 import unittest
-from settings import base_web_url
+from settings.settings import base_web_url
 
 from selenium import webdriver
 

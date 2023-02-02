@@ -1,6 +1,6 @@
 import time
-from settings import (admin_email,
-                      admin_password)
+from settings.settings import (admin_email,
+                               admin_password)
 
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
