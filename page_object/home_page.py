@@ -4,6 +4,7 @@ from settings.settings import (admin_email,
 
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class HomePage(BasePageObject):
@@ -12,7 +13,9 @@ class HomePage(BasePageObject):
     xpath_email_input = "//input[@id='basic_email']"
     xpath_password_input = "//input[@id='basic_password']"
     xpath_login_button = "//button[contains(@class, 'login-button')]"
-
+    xpath_content = "//span[contains(text(), 'Контент')]"
+    xpath_challenges = "//span[contains(text(), 'Челенджі')]"
+    xpath_task = "//a[contains(text(), 'Завдання')]"
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -32,3 +35,18 @@ class HomePage(BasePageObject):
         self.driver.find_element(by=By.XPATH, value=self.xpath_login_button).click()
         time.sleep(3)
         return self
+
+    def add_task(self):
+      el1 = self.driver.find_element(by=By.XPATH, value=self.xpath_content)
+      actions = ActionChains(self.driver)
+      actions.move_to_element(el1).perform()
+      time.sleep(5)
+      el2 = self.driver.find_element(by=By.XPATH, value=self.xpath_challenges)
+      actions.move_to_element(el2).perform()
+      time.sleep(5)
+      el3 = self.driver.find_element(by=By.XPATH, value=self.xpath_task)
+      actions.click(el3).perform()
+      time.sleep(5)
+      return self
+
+
