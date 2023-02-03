@@ -23,8 +23,13 @@ class RegisterTest(unittest.TestCase):
     def test_register(self):
         HomePage(self.driver) \
             .click_drop_down_menu() \
-            .click_register_button() \
-            .enter_register_data() \
+            .click_register_button()\
+            .enter_name("Daisy") \
+            .enter_last_name("Test") \
+            .enter_email("daisy@gmail.com") \
+            .enter_phone("0673456785") \
+            .enter_password("123456789") \
+            .enter_confirm_pass("123456789") \
             .click_exit_button() \
             .click_drop_down_menu() \
             .click_register_button()

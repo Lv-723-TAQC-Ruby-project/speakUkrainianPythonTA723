@@ -1,5 +1,6 @@
 import time
 
+from page_object.add_task_page import AddTaskPage
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
 
@@ -12,4 +13,4 @@ class TaskPage(BasePageObject):
     def click_add_task(self):
         self.driver.find_element(by=By.XPATH, value=self.xpath_add_task_button).click()
         time.sleep(4)
-        return self
+        return AddTaskPage(self.driver)

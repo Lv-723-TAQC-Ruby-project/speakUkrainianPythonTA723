@@ -17,20 +17,20 @@ class AddTaskPage(BasePageObject):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def set_date(self):
-            self.driver.find_element(by=By.XPATH, value=self.xpath_start_date).send_keys("2023-03-03")
+    def set_date(self,date):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_start_date).send_keys(date)
             return self
-    def set_path(self):
-        self.driver.find_element(by=By.XPATH, value=self.xpath_picture).send_keys("C:\\Users\\lovel\\OneDrive\\Desktop\\R.jpeg")
+    def set_path(self,path):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_picture).send_keys(path)
         return self
-    def set_name(self):
-            self.driver.find_element(by=By.XPATH, value=self.xpath_task_name).send_keys("TaskPython")
+    def set_name(self,name):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_task_name).send_keys(name)
             return self
-    def set_title(self):
-            self.driver.find_element(by=By.XPATH, value=self.xpath_task_title).send_keys("TaskPythonTaskPythonTaskPythonTaskPython")
+    def set_title(self,title):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_task_title).send_keys(title)
             return self
-    def set_description(self):
-            self.driver.find_element(by=By.XPATH, value=self.xpath_task_description).send_keys("TaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPython")
+    def set_description(self,description):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_task_description).send_keys(description)
             return self
 
     def save_task(self):
@@ -39,5 +39,8 @@ class AddTaskPage(BasePageObject):
             return self
     def get_error_message(self):
         print(self.driver.find_element(by=By.XPATH, value=self.xpath_error_message))
+        return self
+    def message(self):
+        self.driver.find_element(by=By.XPATH, value="//div[@class='ant-message']").text()
         return self
 

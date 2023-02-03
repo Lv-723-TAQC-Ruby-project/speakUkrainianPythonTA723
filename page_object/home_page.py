@@ -1,9 +1,11 @@
 import time
 
-from page_object.RegisterModel import RegisterModel
+from page_object.register_model import RegisterModel
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+
+from page_object.task_page import TaskPage
 
 
 class HomePage(BasePageObject):
@@ -60,4 +62,4 @@ class HomePage(BasePageObject):
         el3 = self.driver.find_element(by=By.XPATH, value=self.xpath_task)
         actions.click(el3).perform()
         time.sleep(1)
-        return self
+        return TaskPage(self.driver)

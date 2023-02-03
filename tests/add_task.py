@@ -1,14 +1,15 @@
 import unittest
-
+from settings.settings import admin_email,admin_password
 from page_object.add_task_page import AddTaskPage
+from page_object.home_page import HomePage
 
-from page_object.task_page import TaskPage
+from page_object.base_page_object import BasePageObject
 
 from settings.settings import base_web_url
 
 from selenium import webdriver
 
-from page_object.home_page import HomePage
+
 
 
 class OpenTaskPageTest(unittest.TestCase):
@@ -28,16 +29,14 @@ class OpenTaskPageTest(unittest.TestCase):
         HomePage(self.driver) \
             .click_drop_down_menu() \
             .click_enter_button() \
-            .enter_admin_credentials() \
+            .enter_admin_credentials(admin_email,admin_password)\
             .click_drop_down_menu() \
-            .add_task()
-        TaskPage(self.driver) \
-            .click_add_task()
-        AddTaskPage(self.driver) \
-            .set_date() \
-            .set_path() \
-            .set_name() \
-            .set_title() \
-            .set_description() \
+            .add_task()\
+            .click_add_task()\
+            .set_date("2023-03-03") \
+            .set_path("C:\\Users\\lovel\\OneDrive\\Desktop\\R.jpeg") \
+            .set_name("TaskPython") \
+            .set_title("TaskPythonTaskPythonTaskPythonTaskPython") \
+            .set_description("TaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPython") \
             .save_task()
         self.assertTrue("Please,select challenge")

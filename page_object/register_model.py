@@ -1,12 +1,11 @@
 import time
 
-from page_object.home_page import HomePage
-from settings.settings import (admin_email,
-                               admin_password)
+
 
 from page_object.base_page_object import BasePageObject
+
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
+
 
 
 class RegisterModel(BasePageObject):
@@ -25,16 +24,30 @@ class RegisterModel(BasePageObject):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def enter_register_data(self):
-            self.driver.find_element(by=By.XPATH, value=self.xpath_name_input).send_keys("Daisy")
-            self.driver.find_element(by=By.XPATH, value=self.xpath_last_name_input).send_keys("Test")
-            self.driver.find_element(by=By.XPATH, value=self.xpath_user_email_input).send_keys("daisy@gmail.com")
-            self.driver.find_element(by=By.XPATH, value=self.xpath_phone_input).send_keys("0673456785")
-            self.driver.find_element(by=By.XPATH, value=self.xpath_user_pass_input).send_keys("123456789")
-            self.driver.find_element(by=By.XPATH, value=self.xpath_confirm_pass_input).send_keys("123456789")
+    def enter_name(self,name):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_name_input).send_keys(name)
+            return self
+    def enter_last_name(self,last_name):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_last_name_input).send_keys(last_name)
+            return self
+    def enter_email(self,email):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_user_email_input).send_keys(email)
+            return self
+
+    def enter_phone(self,phone):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_phone_input).send_keys(phone)
+            return self
+
+    def enter_password(self,password):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_user_pass_input).send_keys(password)
+            return self
+
+    def enter_confirm_pass(self,confirm):
+            self.driver.find_element(by=By.XPATH, value=self.xpath_confirm_pass_input).send_keys(confirm)
             return self
 
     def click_exit_button(self):
             self.driver.find_element(by=By.XPATH, value=self.xpath_exit_button).click()
             time.sleep(3)
+            from page_object.home_page import HomePage
             return HomePage(self.driver)
