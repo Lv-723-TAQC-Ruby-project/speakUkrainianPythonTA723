@@ -1,4 +1,6 @@
 import time
+
+from page_object.home_page import HomePage
 from settings.settings import (admin_email,
                                admin_password)
 
@@ -35,4 +37,4 @@ class RegisterModel(BasePageObject):
     def click_exit_button(self):
             self.driver.find_element(by=By.XPATH, value=self.xpath_exit_button).click()
             time.sleep(3)
-            return self
+            return HomePage(self.driver)

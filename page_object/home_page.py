@@ -1,7 +1,6 @@
 import time
-from settings.settings import (admin_email,
-                               admin_password)
 
+from page_object.RegisterModel import RegisterModel
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -24,6 +23,7 @@ class HomePage(BasePageObject):
     xpath_content = "//span[contains(text(), 'Контент')]"
     xpath_challenges = "//span[contains(text(), 'Челенджі')]"
     xpath_task = "//a[contains(text(), 'Завдання')]"
+
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -40,12 +40,9 @@ class HomePage(BasePageObject):
     def click_register_button(self):
         self.driver.find_element(by=By.XPATH, value=self.xpath_register_button).click()
         time.sleep(3)
-        return self
+        return RegisterModel(self.driver)
 
-
-
-
-    def enter_admin_credentials(self):
+    def enter_admin_credentials(self, admin_email, admin_password):
         self.driver.find_element(by=By.XPATH, value=self.xpath_email_input).send_keys(admin_email)
         self.driver.find_element(by=By.XPATH, value=self.xpath_password_input).send_keys(admin_password)
         self.driver.find_element(by=By.XPATH, value=self.xpath_login_button).click()
@@ -53,16 +50,14 @@ class HomePage(BasePageObject):
         return self
 
     def add_task(self):
-      el1 = self.driver.find_element(by=By.XPATH, value=self.xpath_content)
-      actions = ActionChains(self.driver)
-      actions.move_to_element(el1).perform()
-      time.sleep(1)
-      el2 = self.driver.find_element(by=By.XPATH, value=self.xpath_challenges)
-      actions.move_to_element(el2).perform()
-      time.sleep(1)
-      el3 = self.driver.find_element(by=By.XPATH, value=self.xpath_task)
-      actions.click(el3).perform()
-      time.sleep(1)
-      return self
-
-
+        el1 = self.driver.find_element(by=By.XPATH, value=self.xpath_content)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(el1).perform()
+        time.sleep(1)
+        el2 = self.driver.find_element(by=By.XPATH, value=self.xpath_challenges)
+        actions.move_to_element(el2).perform()
+        time.sleep(1)
+        el3 = self.driver.find_element(by=By.XPATH, value=self.xpath_task)
+        actions.click(el3).perform()
+        time.sleep(1)
+        return self

@@ -5,6 +5,9 @@ from selenium import webdriver
 
 from page_object.home_page import HomePage
 
+from settings.settings import (admin_email,
+                               admin_password)
+
 
 class LoginHomePageTest(unittest.TestCase):
 
@@ -24,6 +27,6 @@ class LoginHomePageTest(unittest.TestCase):
         HomePage(self.driver) \
             .click_drop_down_menu() \
             .click_enter_button() \
-            .enter_admin_credentials() \
+            .enter_admin_credentials(admin_email, admin_password) \
             .click_drop_down_menu()
         self.assertIn("Додати центр", self.driver.page_source)
