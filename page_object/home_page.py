@@ -40,13 +40,13 @@ class HomePage(BasePageObject):
       el1 = self.driver.find_element(by=By.XPATH, value=self.xpath_content)
       actions = ActionChains(self.driver)
       actions.move_to_element(el1).perform()
-      time.sleep(5)
+      time.sleep(1)
       el2 = self.driver.find_element(by=By.XPATH, value=self.xpath_challenges)
       actions.move_to_element(el2).perform()
-      time.sleep(5)
+      time.sleep(1)
       el3 = self.driver.find_element(by=By.XPATH, value=self.xpath_task)
       actions.click(el3).perform()
-      time.sleep(5)
+      time.sleep(1)
       return self
 
 

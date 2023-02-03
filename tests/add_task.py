@@ -1,5 +1,7 @@
 import unittest
 
+import self as self
+
 from page_object.add_task_page import AddTaskPage
 
 from page_object.task_page import TaskPage
@@ -24,7 +26,7 @@ class OpenTaskPageTest(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.quit()
 
-    def test_task(self):
+    def test_add_task_without_challenge(self):
         HomePage(self.driver) \
             .click_drop_down_menu() \
             .click_enter_button() \
@@ -35,9 +37,9 @@ class OpenTaskPageTest(unittest.TestCase):
             .click_add_task()
         AddTaskPage(self.driver) \
             .set_date() \
+            .set_path() \
             .set_name() \
             .set_title() \
             .set_description() \
             .save_task()
-
-        self.assertIn("Завдання", self.driver.page_source)
+        self.assertTrue("Please,select challenge")
