@@ -1,7 +1,5 @@
 import unittest
 
-import self as self
-
 from page_object.add_task_page import AddTaskPage
 
 from page_object.task_page import TaskPage
