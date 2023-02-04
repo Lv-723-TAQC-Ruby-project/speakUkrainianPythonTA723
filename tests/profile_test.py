@@ -23,9 +23,13 @@ class ProfileTest(unittest.TestCase):
         cls.driver.quit()
 
     def test_message_about_incorrectly_entered_last_name(self):
-        error_text = "Прізвище не може містити більше, ніж 25 символів"
-        invalid_text = "AfBbCcDdEeFfGgHhIiJjKkLlMmNn"
-        error_name_25_more_characters = HomePage(self.driver) \
+        error_text_more_25_characters = "Прізвище не може містити більше, ніж 25 символів"
+        invalid_text_25_characters = "AfBbCcDdEeFfGgHhIiJjKkLlMmNn"
+        error_text_numbers = "Прізвище не може містити цифри"
+        invalid_text_numbers = "12345"
+        error_text_special_characters = "Прізвище не може містити спеціальні символи"
+        invalid_text_special_characters = "!@#$%^&,"
+        error_25_characters = HomePage(self.driver) \
             .click_drop_down_menu() \
             .click_enter_button() \
             .enter_admin_credentials(admin_email, admin_password)\
@@ -33,6 +37,21 @@ class ProfileTest(unittest.TestCase):
             .click_my_profile_button()\
             .click_edit_profile_button()\
             .delete_last_name()\
-            .enter_last_name(invalid_text)\
+            .enter_last_name(invalid_text_25_characters)\
             .get_error_text()
-        self.assertEqual(error_name_25_more_characters, error_text)
+        self.assertEqual(error_25_characters, error_text_more_25_characters)
+
+        EditProfileModale(self.driver)\
+            .delete_last_name()\
+            .enter_last_name(invalid_text_numbers)\
+            .get_error_text()
+        self.assertIn(error_text_numbers, self.driver.page_source)
+
+        EditProfileModale(self.driver) \
+            .delete_last_name() \
+            .enter_last_name(invalid_text_special_characters) \
+            .get_error_text()
+        self.assertTrue(error_text_special_characters)
+
+
+
