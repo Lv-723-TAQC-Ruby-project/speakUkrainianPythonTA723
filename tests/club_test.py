@@ -24,6 +24,7 @@ class ClubTest(unittest.TestCase):
         name_club = "test"
         name_club2 = "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestt"
         name_club3 = "ЫЭЪЫЭЪ"
+        error_message = "Некоректна назва гуртка"
         HomePage(self.driver) \
             .click_drop_down_menu() \
             .click_enter_button() \
@@ -31,15 +32,15 @@ class ClubTest(unittest.TestCase):
             .click_drop_down_menu()\
             .click_add_club_button()\
             .enter_name_club(name_club)
-        self.assertIn("Некоректна назва гуртка", self.driver.page_source)
+        self.assertIn(error_message, self.driver.page_source)
 
         AddClubModel(self.driver)\
             .enter_name_club(name_club2)
-        self.assertIn("Некоректна назва гуртка", self.driver.page_source)
+        self.assertIn(error_message, self.driver.page_source)
 
         AddClubModel(self.driver) \
             .enter_name_club(name_club3)
-        self.assertIn("Некоректна назва гуртка", self.driver.page_source)
+        self.assertIn(error_message, self.driver.page_source)
 
 
 
