@@ -2,6 +2,7 @@ import time
 
 from page_object.register_model import RegisterModel
 from page_object.search_page import SearchPage
+from page_object.add_club_model import AddClubModel
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -28,6 +29,8 @@ class HomePage(BasePageObject):
     xpath_task = "//a[contains(text(), 'Завдання')]"
     xpath_search_input = "//input[@type='search']"
     xpath_search_button = "//span[@aria-label='search']"
+    xpath_add_club_button = "//span[@class='ant-dropdown-menu-title-content']/div[text()='Додати гурток']"
+
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -75,3 +78,7 @@ class HomePage(BasePageObject):
         self.driver.find_element(by=By.XPATH, value=self.xpath_search_button).click()
         time.sleep(3)
         return SearchPage(self.driver)
+
+    def click_add_club_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_add_club_button).click()
+        return AddClubModel(self.driver)
