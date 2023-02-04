@@ -1,15 +1,10 @@
 import unittest
-from settings.settings import admin_email,admin_password
-from page_object.add_task_page import AddTaskPage
-from page_object.home_page import HomePage
-
-from page_object.base_page_object import BasePageObject
-
-from settings.settings import base_web_url
 
 from selenium import webdriver
 
-
+from page_object.home_page import HomePage
+from settings.settings import admin_email, admin_password
+from settings.settings import base_web_url
 
 
 class OpenTaskPageTest(unittest.TestCase):

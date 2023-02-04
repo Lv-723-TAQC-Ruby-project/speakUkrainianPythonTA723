@@ -1,12 +1,10 @@
 import unittest
 
 from selenium import webdriver
-
 from page_object.home_page import HomePage
 from settings.settings import base_web_url
 
-
-class SearchTest(unittest.TestCase):
+class AdvancedSearchTest(unittest.TestCase):
     driver = None
 
     @classmethod
@@ -19,10 +17,10 @@ class SearchTest(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.quit()
 
-    def test_search_club_by_name(self):
-        key_word = "American Gymnastics Club"
-        name_club = HomePage(self.driver) \
-            .enter_search_word(key_word)\
-            .click_search_button()\
+    def test_advanced_search_club_by_name(self):
+        key_word = "Школа танців Dream Team"
+        name_club = HomePage(self.driver)\
+            .click_advanced_search_button()\
+            .click_sort_descending_button()\
             .get_name_of_club()
         self.assertEqual(name_club, key_word)
