@@ -8,7 +8,7 @@ from settings.settings import (admin_email,
 from settings.settings import base_web_url
 
 
-class CheckIfErrorAppearsAfterEmptyFieldsTest(unittest.TestCase):
+class CheckIfErrorWhenAddCenterWithoutName(unittest.TestCase):
     driver = None
 
     @classmethod
@@ -21,7 +21,7 @@ class CheckIfErrorAppearsAfterEmptyFieldsTest(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.quit()
 
-    def test_login(self):
+    def test_add_center_without_name(self):
         message = HomePage(self.driver) \
             .click_drop_down_menu() \
             .click_enter_button() \
