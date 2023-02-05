@@ -1,5 +1,6 @@
 import time
 
+from page_object.Center.add_center_modal import AddCenterModal
 from page_object.advanced_search_page import AdvancedSearchPage
 from page_object.my_profile_page import MyProfilePage
 from page_object.register_model import RegisterModel
@@ -34,7 +35,7 @@ class HomePage(BasePageObject):
     xpath_advanced_search_button = "//span[@title='Розширений пошук']"
     xpath_my_profile_button = "//a[contains(text(), 'Особистий кабінет')]"
     xpath_add_club_button = "//span[@class='ant-dropdown-menu-title-content']/div[text()='Додати гурток']"
-
+    xpath_add_center_button = "//span[@class='ant-dropdown-menu-title-content']/div[text()='Додати центр']"
 
 
     def __init__(self, driver):
@@ -61,6 +62,12 @@ class HomePage(BasePageObject):
         self.driver.find_element(by=By.XPATH, value=self.xpath_login_button).click()
         time.sleep(3)
         return self
+
+    def click_add_center_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_add_center_button).click()
+        time.sleep(3)
+        return AddCenterModal(self.driver)
+
 
     def add_task(self):
         el1 = self.driver.find_element(by=By.XPATH, value=self.xpath_content)
