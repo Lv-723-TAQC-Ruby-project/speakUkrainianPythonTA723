@@ -42,5 +42,5 @@ class AddLocationModal(BasePageObject):
     def click_add_location_button(self):
         self.driver.find_element(by=By.XPATH, value=self.xpath_add_location_button).click()
         time.sleep(3)
-        from page_object.Center.add_center_modal import AddCenterModal
+        from page_object.CenterPO.add_center_modal import AddCenterModal
         return AddCenterModal(self.driver)

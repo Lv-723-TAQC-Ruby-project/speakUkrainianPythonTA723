@@ -3,7 +3,7 @@ import time
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
-from page_object.admin_profile_page import AdminProfilePage
+from page_object.ProfilePO.admin_profile_page import AdminProfilePage
 from page_object.base_page_object import BasePageObject
 
 

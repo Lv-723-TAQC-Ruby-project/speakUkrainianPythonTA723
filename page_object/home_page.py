@@ -3,11 +3,11 @@ import time
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 
-from page_object.Center.add_center_modal import AddCenterModal
+from page_object.CenterPO.add_center_modal import AddCenterModal
 from page_object.add_club_model import AddClubModel
 from page_object.advanced_search_page import AdvancedSearchPage
 from page_object.base_page_object import BasePageObject
-from page_object.my_profile_page import MyProfilePage
+from page_object.ProfilePO.my_profile_page import MyProfilePage
 from page_object.register_model import RegisterModel
 from page_object.search_page import SearchPage
 from page_object.task_page import TaskPage

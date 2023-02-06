@@ -12,7 +12,7 @@ from settings.settings import base_web_url
 class CheckIfErrorWhenAddCenterWithoutName(unittest.TestCase):
     driver = None
     dt = datetime.now()
-    center_name = "New Center Name " + str(dt)
+    center_name = "New CenterPO Name " + str(dt)
     phone_number = "0661111111"
 
     @classmethod

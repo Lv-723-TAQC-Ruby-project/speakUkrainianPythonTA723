@@ -4,8 +4,8 @@ from selenium.common import NoSuchElementException
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
-from page_object.Center.add_contacts_center_modal import AddContactsCenterModal
-from page_object.Center.add_location_modal import AddLocationModal
+from page_object.CenterPO.add_contacts_center_modal import AddContactsCenterModal
+from page_object.CenterPO.add_location_modal import AddLocationModal
 from page_object.base_page_object import BasePageObject
 
 

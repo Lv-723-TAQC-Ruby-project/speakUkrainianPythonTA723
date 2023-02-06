@@ -5,8 +5,7 @@ from selenium import webdriver
 from page_object.home_page import HomePage
 from settings.local_settings import admin_email, admin_password
 from settings.settings import base_web_url
-from page_object.my_profile_page import MyProfilePage
-from page_object.edit_profile_modal import EditProfileModale
+from page_object.ProfilePO.edit_profile_modal import EditProfileModale
 
 
 class ProfileTest(unittest.TestCase):
