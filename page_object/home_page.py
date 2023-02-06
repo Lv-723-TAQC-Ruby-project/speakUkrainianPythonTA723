@@ -1,15 +1,15 @@
 import time
 
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
+
 from page_object.Center.add_center_modal import AddCenterModal
+from page_object.add_club_model import AddClubModel
 from page_object.advanced_search_page import AdvancedSearchPage
+from page_object.base_page_object import BasePageObject
 from page_object.my_profile_page import MyProfilePage
 from page_object.register_model import RegisterModel
 from page_object.search_page import SearchPage
-from page_object.add_club_model import AddClubModel
-from page_object.base_page_object import BasePageObject
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-
 from page_object.task_page import TaskPage
 
 
@@ -37,7 +37,6 @@ class HomePage(BasePageObject):
     xpath_add_club_button = "//span[@class='ant-dropdown-menu-title-content']/div[text()='Додати гурток']"
     xpath_add_center_button = "//span[@class='ant-dropdown-menu-title-content']/div[text()='Додати центр']"
 
-
     def __init__(self, driver):
         super().__init__(driver)
 
@@ -60,14 +59,13 @@ class HomePage(BasePageObject):
         self.driver.find_element(by=By.XPATH, value=self.xpath_email_input).send_keys(admin_email)
         self.driver.find_element(by=By.XPATH, value=self.xpath_password_input).send_keys(admin_password)
         self.driver.find_element(by=By.XPATH, value=self.xpath_login_button).click()
-        time.sleep(3)
+        time.sleep(5)
         return self
 
     def click_add_center_button(self):
         self.driver.find_element(by=By.XPATH, value=self.xpath_add_center_button).click()
         time.sleep(3)
         return AddCenterModal(self.driver)
-
 
     def add_task(self):
         el1 = self.driver.find_element(by=By.XPATH, value=self.xpath_content)
@@ -104,4 +102,3 @@ class HomePage(BasePageObject):
     def click_add_club_button(self):
         self.driver.find_element(by=By.XPATH, value=self.xpath_add_club_button).click()
         return AddClubModel(self.driver)
-
