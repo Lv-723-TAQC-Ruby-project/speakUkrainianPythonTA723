@@ -7,5 +7,5 @@ class BasePageObject:
 
 
     def message(self):
-        self.driver.find_element(by=By.XPATH, value="//div[@class='ant-message']").text()
+        self.driver.find_element(by=By.XPATH, value="//div[@class='ant-message']")
         return self

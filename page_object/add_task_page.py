@@ -40,7 +40,5 @@ class AddTaskPage(BasePageObject):
     def get_error_message(self):
         print(self.driver.find_element(by=By.XPATH, value=self.xpath_error_message))
         return self
-    def message(self):
-        self.driver.find_element(by=By.XPATH, value="//div[@class='ant-message']").text()
-        return self
+
 

@@ -1,4 +1,5 @@
 import unittest
+
 from settings.settings import admin_email,admin_password
 from page_object.add_task_page import AddTaskPage
 from page_object.home_page import HomePage
@@ -39,4 +40,4 @@ class OpenTaskPageTest(unittest.TestCase):
             .set_title("TaskPythonTaskPythonTaskPythonTaskPython") \
             .set_description("TaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPythonTaskPython") \
             .save_task()
-        self.assertTrue("Please,select challenge")
+        self.assertIsNotNone(BasePageObject(self.driver).message(),"User see message: Please,select challenge")
