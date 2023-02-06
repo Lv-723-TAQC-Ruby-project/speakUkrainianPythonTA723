@@ -1,6 +1,11 @@
 import time
 
+from page_object.Center.add_center_modal import AddCenterModal
+from page_object.advanced_search_page import AdvancedSearchPage
+from page_object.my_profile_page import MyProfilePage
 from page_object.register_model import RegisterModel
+from page_object.search_page import SearchPage
+from page_object.add_club_model import AddClubModel
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -25,6 +30,13 @@ class HomePage(BasePageObject):
     xpath_content = "//span[contains(text(), 'Контент')]"
     xpath_challenges = "//span[contains(text(), 'Челенджі')]"
     xpath_task = "//a[contains(text(), 'Завдання')]"
+    xpath_search_input = "//input[@type='search']"
+    xpath_search_button = "//span[@aria-label='search']"
+    xpath_advanced_search_button = "//span[@title='Розширений пошук']"
+    xpath_my_profile_button = "//a[contains(text(), 'Особистий кабінет')]"
+    xpath_add_club_button = "//span[@class='ant-dropdown-menu-title-content']/div[text()='Додати гурток']"
+    xpath_add_center_button = "//span[@class='ant-dropdown-menu-title-content']/div[text()='Додати центр']"
+
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -51,6 +63,12 @@ class HomePage(BasePageObject):
         time.sleep(3)
         return self
 
+    def click_add_center_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_add_center_button).click()
+        time.sleep(3)
+        return AddCenterModal(self.driver)
+
+
     def add_task(self):
         el1 = self.driver.find_element(by=By.XPATH, value=self.xpath_content)
         actions = ActionChains(self.driver)
@@ -63,3 +81,27 @@ class HomePage(BasePageObject):
         actions.click(el3).perform()
         time.sleep(1)
         return TaskPage(self.driver)
+
+    def enter_search_word(self, key_word):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_search_input).send_keys(key_word)
+        return self
+
+    def click_search_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_search_button).click()
+        time.sleep(3)
+        return SearchPage(self.driver)
+
+    def click_advanced_search_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_advanced_search_button).click()
+        time.sleep(4)
+        return AdvancedSearchPage(self.driver)
+
+    def click_my_profile_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_my_profile_button).click()
+        time.sleep(2)
+        return MyProfilePage(self.driver)
+
+    def click_add_club_button(self):
+        self.driver.find_element(by=By.XPATH, value=self.xpath_add_club_button).click()
+        return AddClubModel(self.driver)
+
