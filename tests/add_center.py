@@ -66,5 +66,8 @@ class CheckIfErrorWhenAddCenterWithoutName(unittest.TestCase):
             .click_next_step_button() \
             .select_club() \
             .click_finish_button()\
+            .switch_to_centers()\
+            .get_last_page()\
             .get_added_center_title()
+
         self.assertEqual(added_center_title, self.center_name)

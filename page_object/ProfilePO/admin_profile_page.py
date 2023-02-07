@@ -15,10 +15,17 @@ class AdminProfilePage(BasePageObject):
         super().__init__(driver)
 
     def get_added_center_title(self):
+        return self.driver.find_element(by=By.XPATH, value=self.xpath_last_center_title).text
+
+    def switch_to_centers(self):
         self.driver.find_element(by=By.XPATH, value=self.xpath_click_choose_center).click()
         time.sleep(3)
         self.driver.find_element(by=By.XPATH, value=self.xpath_select_center).click()
         time.sleep(3)
+        return self
+
+    def get_last_page(self):
         self.driver.find_element(by=By.XPATH, value=self.xpath_last_page).click()
         time.sleep(3)
-        return self.driver.find_element(by=By.XPATH, value=self.xpath_last_center_title).text
+        return self
+
