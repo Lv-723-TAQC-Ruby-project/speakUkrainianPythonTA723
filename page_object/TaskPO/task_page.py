@@ -1,6 +1,6 @@
 import time
 
-from page_object.add_task_page import AddTaskPage
+from page_object.TaskPO.add_task_page import AddTaskPage
 from page_object.base_page_object import BasePageObject
 from selenium.webdriver.common.by import By
 
