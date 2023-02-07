@@ -29,18 +29,41 @@ class ClubTest(unittest.TestCase):
             .click_drop_down_menu() \
             .click_enter_button() \
             .enter_admin_credentials(admin_email, admin_password) \
-            .click_drop_down_menu()\
-            .click_add_club_button()\
+            .click_drop_down_menu() \
+            .click_add_club_button() \
             .enter_name_club(name_club)
         self.assertIn(error_message, self.driver.page_source)
 
-        AddClubModel(self.driver)\
+        AddClubModel(self.driver) \
             .enter_name_club(name_club2)
         self.assertIn(error_message, self.driver.page_source)
 
         AddClubModel(self.driver) \
             .enter_name_club(name_club3)
         self.assertIn(error_message, self.driver.page_source)
+
+
+    def test_language_error_description_club(self):
+        name_club = "Спорт"
+        age_from = "8"
+        age_to = "15"
+        phone_number = "0932584213"
+        description = "ё ы э ъ"
+        error_language_message = "Опис гуртка не може містити російські літери"
+        HomePage(self.driver) \
+            .click_drop_down_menu() \
+            .click_add_club_button() \
+            .enter_name_club(name_club) \
+            .select_category_by_name() \
+            .enter_age_from(age_from) \
+            .enter_age_to(age_to) \
+            .click_next_step() \
+            .enter_phone_number(phone_number) \
+            .click_next_step() \
+            .enter_description(description)
+        self.assertTrue(error_language_message, self.driver.page_source)
+
+
 
 
 

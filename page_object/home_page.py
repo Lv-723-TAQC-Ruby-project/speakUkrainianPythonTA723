@@ -10,7 +10,7 @@ from page_object.base_page_object import BasePageObject
 from page_object.ProfilePO.my_profile_page import MyProfilePage
 from page_object.register_model import RegisterModel
 from page_object.search_page import SearchPage
-from page_object.task_page import TaskPage
+from page_object.TaskPO.task_page import TaskPage
 
 
 class HomePage(BasePageObject):
